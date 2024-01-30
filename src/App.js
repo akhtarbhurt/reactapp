@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Homes from "./pages/Homes";
+import Movies from "./pages/Movies";
+import Navbar from "./components/Navbar";
+import "./App.css";
+import MovieDetails from "./pages/MovieDetails";
+import TvDetails from "./pages/TvDetails";
+import SearchResults from "./pages/SearchResults"; // Import the SearchResults component
+import ErrorPage from "./pages/ErrorPage";
+import TvShows from "./pages/TvShows";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path={"/"} element={<Homes />} />
+          <Route path={"/movies"} element={<Movies />} />
+          <Route path={"/searchResults"} element={<SearchResults />} /> {/* Add this line */}
+          <Route path={"/MovieDetails/:id"} element={<MovieDetails />} />
+          <Route path={"/tvShows"} element={<TvShows />} />
+          <Route path={"/TvDetails/:id"} element={<TvDetails />} />
+          <Route path={"/*"} element={<ErrorPage />} /> {/* Handle other paths or show an error page */}
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
+    </>
   );
 }
 

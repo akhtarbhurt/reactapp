@@ -9,7 +9,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [select, setSelect] = useState('popularity.desc');
   const [genre, setGenre] = useState([]);
-  const [dataGenre, setDataGenre] = useState();
+  const [dataGenre, setDataGenre] = useState(" ");
   
   const handledSelect = (event) => {
     console.log('Selected Option:', event.target.value);
@@ -84,6 +84,8 @@ const Movies = () => {
     fetchGenre()
   }, [ fetchInitialData ]);
   
+
+
   const handleGenre = (selectedGenres) => {
     setDataGenre(selectedGenres.join(','));
   };
